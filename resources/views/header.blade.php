@@ -1154,8 +1154,8 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="{{route('seller.login')}}" class="shop-btn">
-                        Seller Login
+                    <a href="{{ route('vendor.register.form') }}" class="shop-btn">
+                        Vendor Register
                     </a>
                 </div>
             </div>
