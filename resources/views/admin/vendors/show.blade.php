@@ -338,11 +338,16 @@
                         <div class="vendor-subtitle">
                             <span><i class="bi bi-envelope"></i> {{ $vendor->email }}</span>
                             <span><i class="bi bi-telephone"></i> {{ $vendor->mobile }}</span>
-                            <span><i class="bi bi-shop"></i> {{ $vendor->business_type }}</span>
-                            <span class="status-badge status-active">
-                                <i class="bi bi-check-circle-fill"></i>
-                                Active Vendor
-                            </span>
+                            <span><i class="bi bi-shop"></i> {{ $vendor->business_type }}</span>                        
+                            </span>  @if($vendor->status === 'active')
+                                        <span class="badge bg-success">
+                                            <i class="bi bi-check-circle-fill"></i> Active
+                                        </span>
+                                    @else
+                                        <span class="badge bg-secondary">
+                                            <i class="bi bi-x-circle-fill"></i> Inactive
+                                        </span>
+                                    @endif
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,10 @@ use Livewire\Volt\Volt;
 use App\Http\Controllers\sellerController;
 use App\Http\Controllers\VendorRegisterController;
 use App\Http\Controllers\Admin\VendorController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AttributeController;
+use App\Http\Controllers\AttributeValueController;
+use App\Http\Controllers\ProductVariantController;
 
 
 Route::get('/', function () {
@@ -25,7 +29,24 @@ Route::get('/admin', function () {
 })->name('home');
 Route::get('vendors', [VendorController::class,'index'])->name('admin.vendors');
     Route::get('vendor/{id}', [VendorController::class,'show'])->name('admin.vendor.view');
+ // Products
+        Route::resource('products', ProductController::class);
 
+        // Attributes
+        Route::resource('attributes', AttributeController::class);
+
+        // Attribute Values
+        Route::resource('attribute-values', AttributeValueController::class);
+
+        // Product Variants (nested)
+        Route::get('products/{product}/variants', [ProductVariantController::class, 'index'])
+            ->name('products.variants.index');
+
+        Route::get('products/{product}/variants/create', [ProductVariantController::class, 'create'])
+            ->name('products.variants.create');
+
+        Route::post('products/{product}/variants', [ProductVariantController::class, 'store'])
+            ->name('products.variants.store');
 //seler
 Route::get('seller', [sellerController::class, 'sellerLogin'])->name('seller.login');
 

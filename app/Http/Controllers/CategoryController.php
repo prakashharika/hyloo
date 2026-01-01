@@ -21,7 +21,7 @@ class CategoryController extends Controller
     // Show create form
     public function create()
     {
-        return view('admin.category.create');
+        return view('admin.category.form');
     }
 
     // Store new category
