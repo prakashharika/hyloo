@@ -14,68 +14,84 @@ class VendorRegisterController extends Controller
     }
 
     public function store(Request $request)
-    {
-       $request->validate([
-    'full_name' => 'required|string',
-    'mobile' => 'required',
-    'email' => 'required|email|unique:vendors',
-    'password' => 'required|confirmed|min:6',
-    'business_type' => 'required',
+{
+    $validated = $request->validate([
+        'full_name' => 'required|string|max:255',
+        'mobile' => 'required|digits:10|unique:vendors,mobile',
+        'email' => 'required|email|unique:vendors,email|max:255',
+        'password' => 'required|confirmed|min:6',
+        'business_type' => 'required|string|max:50',
+        
+        'shop_name' => 'required|string|max:255',
+        'shop_address' => 'required|string',
+        'shop_type' => 'required|string|max:50',
+        'pincode' => 'nullable|digits:6',
+        'gstin' => 'nullable|string|max:15',
+        
+        'account_holder' => 'required|string|max:255',
+        'bank_name' => 'required|string|max:255',
+        'account_number' => 'required|string|max:20',
+        'ifsc' => 'required|string|max:11',
+        'pan' => 'required|string|max:10',
+        
+        'shop_photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        'business_proof' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:2048',
+        'pan_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        'bank_proof' => 'required|file|mimes:jpeg,png,jpg,pdf|max:2048',
+    ]);
 
-    'shop_name' => 'required',
-    'shop_address' => 'required',
-    'shop_type' => 'required',
-
-    'account_holder' => 'required',
-    'bank_name' => 'required',
-    'account_number' => 'required',
-    'ifsc' => 'required',
-    'pan' => 'required',
-
-    'pan_image' => 'required|image',
-    'bank_proof' => 'required|image',
-]);
-
-
-        // File uploads
-        $shopPhoto = $request->file('shop_photo')?->store('vendors/shop', 'public');
-        $businessProof = $request->file('business_proof')?->store('vendors/proof', 'public');
+    try {
+        // File uploads with unique names
+        $shopPhoto = $request->hasFile('shop_photo') ? 
+            $request->file('shop_photo')->store('vendors/shop', 'public') : null;
+            
+        $businessProof = $request->hasFile('business_proof') ? 
+            $request->file('business_proof')->store('vendors/proof', 'public') : null;
+            
         $panImage = $request->file('pan_image')->store('vendors/pan', 'public');
         $bankProof = $request->file('bank_proof')->store('vendors/bank', 'public');
 
-        Vendor::create([
-            'full_name' => $request->full_name,
-            'mobile' => $request->mobile,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'business_type' => $request->business_type,
-            'experience' => $request->experience,
-            'referral_code' => $request->referral_code,
+        // Create vendor
+        $vendor = Vendor::create([
+            'full_name' => $validated['full_name'],
+            'mobile' => $validated['mobile'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'business_type' => $validated['business_type'],
 
-            'shop_name' => $request->shop_name,
-            'shop_address' => $request->shop_address,
-            'pincode' => $request->pincode,
-            'map_location' => $request->map_location,
-            'shop_type' => $request->shop_type,
-            'gstin' => $request->gstin,
-            'fssai' => $request->fssai,
+            'shop_name' => $validated['shop_name'],
+            'shop_address' => $validated['shop_address'],
+            'shop_type' => $validated['shop_type'],
+            'pincode' => $validated['pincode'] ?? null,
+            'gstin' => $validated['gstin'] ?? null,
             'shop_photo' => $shopPhoto,
             'business_proof' => $businessProof,
-            'home_delivery' => $request->has('home_delivery'),
 
-            'account_holder' => $request->account_holder,
-            'bank_name' => $request->bank_name,
-            'account_number' => $request->account_number,
-            'ifsc' => $request->ifsc,
-            'upi' => $request->upi,
-            'pan' => $request->pan,
+            'account_holder' => $validated['account_holder'],
+            'bank_name' => $validated['bank_name'],
+            'account_number' => $validated['account_number'],
+            'ifsc' => $validated['ifsc'],
+            'pan' => $validated['pan'],
             'pan_image' => $panImage,
             'bank_proof' => $bankProof,
-           'status' => 'inactive',
-
+            
+            'status' => 'inactive',
+            'registration_date' => now(),
         ]);
 
+        // Optional: Send welcome email or notification
+        // Mail::to($vendor->email)->send(new VendorWelcomeMail($vendor));
 
-        return redirect()->back()->with('success', 'Vendor application submitted successfully!');
+        return redirect()->back()
+            ->with('success', '🎉 Application submitted successfully! We will review your application and contact you soon.')
+            ->with('vendor_id', $vendor->id);
+
+    } catch (\Exception $e) {
+        Log::error('Vendor registration failed: ' . $e->getMessage());
+        
+        return redirect()->back()
+            ->with('error', 'Something went wrong. Please try again.')
+            ->withInput();
     }
+}
 }
