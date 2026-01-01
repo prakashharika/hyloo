@@ -71,7 +71,10 @@ class VendorRegisterController extends Controller
             'pan' => $request->pan,
             'pan_image' => $panImage,
             'bank_proof' => $bankProof,
+           'status' => 'inactive',
+
         ]);
+
 
         return redirect()->back()->with('success', 'Vendor application submitted successfully!');
     }
