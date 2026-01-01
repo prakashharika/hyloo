@@ -44,7 +44,7 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="footer-order">
                                 <div class="logo">
-                                    <img src="assets/images/logos/footer-logo.webp" alt="logo">
+                                    <img src="{{asset('assets/images/logos/footer-logo.webp')}}" alt="logo">
                                 </div>
                                 <div class="footer-link order-link">
                                     <ul>
@@ -216,7 +216,7 @@
                     </div>
                     <div class="footer-payment-mode">
                         <a href="#">
-                            <img src="assets/images/homepage-one/payment-img.png" alt="img">
+                            <img src="{{asset('assets/images/homepage-one/payment-img.png')}}" alt="img">
                         </a>
                     </div>
                 </div>

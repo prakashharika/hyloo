@@ -4,9 +4,9 @@
             <div class="container">
                 <div class="header-top">
                     <div class="header-profile">
-                        <a href="user-profile.html"><span>Account</span></a>
-                        <a href="order.html"><span>Track Order</span></a>
-                        <a href="faq.html"><span>Support</span></a>
+                        <a href="{{route('home')}}" ><span>Account</span></a>
+                        <a href="{{route('home')}}"><span>Track Order</span></a>
+                        <a href="{{route('home')}}"><span>Support</span></a>
                     </div>
                     <div class="header-contact d-none d-lg-block">
                         <div class="header-top-contact">
@@ -48,8 +48,8 @@
             <div class="container">
                 <div class="header-center">
                     <div class="logo">
-                        <a href="index-2.html">
-                            <img src="assets/images/logos/logo.webp" alt="logo">
+                        <a href="index"{{route('home')}}">
+                            <img src="{{asset('assets/images/logos/logo.webp')}}" alt="logo">
                         </a>
                     </div>
                     <div class="header-search-btn">
@@ -86,7 +86,7 @@
                     </div>
                     <div class="header-cart-items">
                         <div class="header-compaire">
-                            <a href="compaire.html" class="cart-item">
+                            <a href="{{route('home')}}" class="cart-item">
                                 <span>
                                     <svg width="29" height="24" viewBox="0 0 29 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +105,7 @@
                             </a>
                         </div>
                         <div class="header-favourite">
-                            <a href="wishlist.html" class="cart-item">
+                            <a href="{{route('home')}}" class="cart-item">
                                 <span>
                                     <svg width="28" height="23" viewBox="0 0 28 23" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -121,7 +121,7 @@
                             </a>
                         </div>
                         <div class="header-cart">
-                            <a href="cart.html" class="cart-item">
+                            <a href="{{route('home')}}" class="cart-item">
                                 <span>
                                     <svg width="24" height="23" viewBox="0 0 24 23" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -140,7 +140,7 @@
                                     <div class="wrapper">
                                         <div class="wrapper-item">
                                             <div class="wrapper-img">
-                                                <img src="assets/images/homepage-one/product-img/p-img-10.webp"
+                                                <img src="{{asset('assets/images/homepage-one/product-img/p-img-10.webp')}}"
                                                     alt="img">
                                             </div>
                                             <div class="wrapper-content">
@@ -162,7 +162,7 @@
                                     <div class="wrapper">
                                         <div class="wrapper-item">
                                             <div class="wrapper-img">
-                                                <img src="assets/images/homepage-one/product-img/p-img-2.webp"
+                                                <img src="{{asset('assets/images/homepage-one/product-img/p-img-2.webp')}}"
                                                     alt="img">
                                             </div>
                                             <div class="wrapper-content">
@@ -184,7 +184,7 @@
                                     <div class="wrapper">
                                         <div class="wrapper-item">
                                             <div class="wrapper-img">
-                                                <img src="assets/images/homepage-one/product-img/p-img-3.webp"
+                                                <img src="{{asset('assets/images/homepage-one/product-img/p-img-3.webp')}}"
                                                     alt="img">
                                             </div>
                                             <div class="wrapper-content">
@@ -206,7 +206,7 @@
                                     <div class="wrapper">
                                         <div class="wrapper-item">
                                             <div class="wrapper-img">
-                                                <img src="assets/images/homepage-one/product-img/p-img-14.webp"
+                                                <img src="{{asset('assets/images/homepage-one/product-img/p-img-14.webp')}}"
                                                     alt="img">
                                             </div>
                                             <div class="wrapper-content">
@@ -234,14 +234,14 @@
                                         <h5 class="wrapper-title">$60</h5>
                                     </div>
                                     <div class="cart-btn">
-                                        <a href="cart.html" class="shop-btn view-btn">View Cart</a>
-                                        <a href="checkout.html" class="shop-btn checkout-btn">Checkout Now</a>
+                                        <a href="{{route('home')}}" class="shop-btn view-btn">View Cart</a>
+                                        <a href="{{route('home')}}" class="shop-btn checkout-btn">Checkout Now</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="header-user">
-                            <a href="user-profile.html">
+                            <a href="{{route('home')}}">
                                 <span>
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -269,10 +269,10 @@
                         </svg>
                     </span>
                 </button>
-                <a href="index-2.html" class="mobile-header-logo">
-                    <img src="assets/images/logos/logo.webp" alt="logo">
+                <a href="{{route('home')}}" class="mobile-header-logo">
+                    <img src="{{asset('assets/images/logos/logo.webp')}}" alt="logo">
                 </a>
-                <a href="cart.html" class="header-cart cart-item">
+                <a href="{{route('home')}}" class="header-cart cart-item">
                     <span>
                         <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -293,7 +293,7 @@
                     <div class="header-top">
                         <div class="header-cart ">
                             <div class="header-compaire">
-                                <a href="compaire.html" class="cart-item">
+                                <a href="{{route('home')}}" class="cart-item">
                                     <span>
                                         <svg width="29" height="24" viewBox="0 0 29 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -312,7 +312,7 @@
                                 </a>
                             </div>
                             <div class="header-favourite">
-                                <a href="wishlist.html" class="cart-item">
+                                <a href="{{route('home')}}" class="cart-item">
                                     <span>
                                         <svg width="28" height="23" viewBox="0 0 28 23" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -349,7 +349,7 @@
                     <div class="category-dropdown">
                         <ul class="category-list">
                             <li class="category-list-item">
-                                <a href="product-sidebar.html">
+                                <a href="{{route('home')}}">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -380,7 +380,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.html">
+                                <a href="{{route('home')}}">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -411,7 +411,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.html">
+                                <a href="{{route('home')}}">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -443,7 +443,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.html">
+                                <a href="{{route('home')}}">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -474,7 +474,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.html">
+                                <a href="{{route('home')}}">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -505,7 +505,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.html">
+                                <a href="{{route('home')}}">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -536,7 +536,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.html">
+                                <a href="{{route('home')}}">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -568,7 +568,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.html">
+                                <a href="{{route('home')}}">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -599,7 +599,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.html">
+                                <a href="{{route('home')}}">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -631,7 +631,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.html">
+                                <a href="{{route('home')}}">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -698,7 +698,7 @@
                             <div class="category-dropdown position-absolute" id="subMenu">
                                 <ul class="category-list">
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.html">
+                                        <a href="{{route('home')}}">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -732,7 +732,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.html">
+                                        <a href="{{route('home')}}">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -766,7 +766,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.html">
+                                        <a href="{{route('home')}}">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -801,7 +801,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.html">
+                                        <a href="{{route('home')}}">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -835,7 +835,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.html">
+                                        <a href="{{route('home')}}">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -869,7 +869,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.html">
+                                        <a href="{{route('home')}}">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -903,7 +903,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.html">
+                                        <a href="{{route('home')}}">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -937,7 +937,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.html">
+                                        <a href="{{route('home')}}">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -971,7 +971,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.html">
+                                        <a href="{{route('home')}}">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -1006,7 +1006,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.html">
+                                        <a href="{{route('home')}}">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -1045,12 +1045,12 @@
                         <div class="header-nav-menu">
                             <ul class="menu-list">
                                 <li>
-                                    <a href="index-2.html">
+                                    <a href="{{route('home')}}">
                                         <span class="list-text">Home</span>
                                     </a>
                                 </li>
                                 <li class="mega-menu">
-                                    <a href="product-sidebar.html">
+                                    <a href="{{route('home')}}">
                                         <span class="list-text">Shop</span>
                                         <span>
                                             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
@@ -1073,30 +1073,30 @@
                                             <div class="menu-list">
                                                 <h5 class="menu-title">Dresses</h5>
                                                 <ul>
-                                                    <li><a href="product-sidebar.html">Shirt</a></li>
-                                                    <li><a href="product-sidebar.html">Skart</a></li>
-                                                    <li><a href="product-sidebar.html"> T-Shirt</a></li>
+                                                    <li><a href="{{route('home')}}">Shirt</a></li>
+                                                    <li><a href="{{route('home')}}">Skart</a></li>
+                                                    <li><a href="{{route('home')}}"> T-Shirt</a></li>
                                                 </ul>
                                             </div>
                                             <div class="menu-list">
                                                 <h5 class="menu-title">Bags</h5>
                                                 <ul>
-                                                    <li><a href="product-sidebar.html">HandBags</a></li>
-                                                    <li><a href="product-sidebar.html">Mobile Bags</a></li>
-                                                    <li><a href="product-sidebar.html">School Bags</a></li>
+                                                    <li><a href="{{route('home')}}">HandBags</a></li>
+                                                    <li><a href="{{route('home')}}">Mobile Bags</a></li>
+                                                    <li><a href="{{route('home')}}">School Bags</a></li>
                                                 </ul>
                                             </div>
                                             <div class="menu-list">
                                                 <h5 class="menu-title">Cosmetics</h5>
                                                 <ul>
-                                                    <li><a href="product-sidebar.html">Liptics</a></li>
-                                                    <li><a href="product-sidebar.html">Foundation</a></li>
-                                                    <li><a href="product-sidebar.html"> Eye Liner</a></li>
+                                                    <li><a href="{{route('home')}}">Liptics</a></li>
+                                                    <li><a href="{{route('home')}}">Foundation</a></li>
+                                                    <li><a href="{{route('home')}}"> Eye Liner</a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="shop-menu-img">
-                                            <img src="assets/images/homepage-one/empty-wishlist.webp" alt="img">
+                                            <img src="{{asset('assets/images/homepage-one/empty-wishlist.webp')}}" alt="img">
                                         </div>
                                     </div>
                                 </li>
@@ -1120,34 +1120,34 @@
                                         </span>
                                     </a>
                                     <ul class="header-sub-menu">
-                                        <li><a href="product-info.html">Product-details</a></li>
-                                        <li><a href="privacy.html">Privacy Policy</a></li>
-                                        <li><a href="terms.html">Terms & Condition</a></li>
-                                        <li><a href="faq.html">FAQ</a></li>
-                                        <li><a href="product-sidebar.html">Shop Category Icon</a></li>
-                                        <li><a href="product-sidebar.html">Shop List View</a></li>
+                                        <li><a href="{{route('home')}}">Product-details</a></li>
+                                        <li><a href="{{route('home')}}">Privacy Policy</a></li>
+                                        <li><a href="{{route('home')}}">Terms & Condition</a></li>
+                                        <li><a href="{{route('home')}}">FAQ</a></li>
+                                        <li><a href="{{route('home')}}">Shop Category Icon</a></li>
+                                        <li><a href="{{route('home')}}">Shop List View</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="about.html">
+                                    <a href="{{route('home')}}">
                                         <span class="list-text">About</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="blogs.html">
+                                    <a href="{{route('home')}}">
                                         <span class="list-text">Blog</span>
                                     </a>
                                     <ul class="header-sub-menu">
-                                        <li><a href="blogs-details.html">Blog-details</a></li>
+                                        <li><a href="{{route('home')}}">Blog-details</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="user-profile.html">
+                                    <a href="{{route('home')}}">
                                         <span class="list-text">User Dashboard</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="contact-us.html">
+                                    <a href="{{route('home')}}">
                                         <span class="list-text">Contact</span>
                                     </a>
                                 </li>

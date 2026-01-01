@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class VendorRegisterController extends Controller
 {
@@ -41,7 +44,6 @@ class VendorRegisterController extends Controller
     ]);
 
     try {
-        // File uploads with unique names
         $shopPhoto = $request->hasFile('shop_photo') ? 
             $request->file('shop_photo')->store('vendors/shop', 'public') : null;
             
@@ -51,7 +53,6 @@ class VendorRegisterController extends Controller
         $panImage = $request->file('pan_image')->store('vendors/pan', 'public');
         $bankProof = $request->file('bank_proof')->store('vendors/bank', 'public');
 
-        // Create vendor
         $vendor = Vendor::create([
             'full_name' => $validated['full_name'],
             'mobile' => $validated['mobile'],
@@ -94,4 +95,22 @@ class VendorRegisterController extends Controller
             ->withInput();
     }
 }
+public function login(Request $request){
+    $email = "xybutyheha@mailinator.com";
+            $vendor = Vendor::where('email', $email)->first();
+            if ($vendor) {
+                Auth::guard('vendor')->login($vendor);
+            return redirect()->route('vendor.register.form')->with('success', 'OTP verified successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Invalid OTP. Please try again.');
+        }
+}
+   public function logout(Request $request)
+    {
+        Auth::guard('vendor')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('vendor.register.form');
+    }
+
 }

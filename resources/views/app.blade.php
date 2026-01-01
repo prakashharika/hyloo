@@ -20,7 +20,7 @@
     <!--------------- bootstrap-css ---------------->
     <link rel="stylesheet" href="{{asset('css/bootstrap-5.3.2.min.css')}}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js')}}"></script>
 
     <!---------------------- Range Slider ------------------->
     <link rel="stylesheet" href="{{asset('css/nouislider.min.css')}}">
@@ -48,22 +48,22 @@
 
 
     <!--------------- jQuery ---------------->
-    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery_3.7.1.min.js"></script>
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script><script src="{{asset('assets/js/jquery_3.7.1.min.js')}}"></script>
 
     <!--------------- bootstrap-js ---------------->
-    <script src="assets/js/bootstrap_5.3.2.bundle.min.js"></script>
+    <script src="{{asset('assets/js/bootstrap_5.3.2.bundle.min.js')}}"></script>
 
     <!--------------- Range-Slider-js ---------------->
-    <script src="assets/js/nouislider.min.js"></script>
+    <script src="{{asset('assets/js/nouislider.min.js')}}"></script>
 
     <!--------------- scroll-Animation-js ---------------->
-    <script src="assets/js/aos-3.0.0.js"></script>
+    <script src="{{asset('assets/js/aos-3.0.0.js')}}"></script>
 
     <!--------------- swiper-js ---------------->
-    <script src="assets/js/swiper10-bundle.min.js"></script>
+    <script src="{{asset('assets/js/swiper10-bundle.min.js')}}"></script>
 
     <!--------------- additional-js ---------------->
-    <script src="assets/js/ecoshop.js"></script>
+    <script src="{{asset('assets/js/ecoshop.js')}}"></script>
 
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"05c60afabf3e4b64ba091c1c292eafc9","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>

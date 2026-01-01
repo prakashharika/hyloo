@@ -69,7 +69,7 @@
 }
 
 .step-card {
-    background: linear-gradient(135deg, #35af3f 0%, #117012  100%);
+    background: linear-gradient(135deg, #35af3f 0%, #34A853  100%);
     border-radius: 20px;
     padding: 2.5rem;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -84,7 +84,7 @@
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 12px;
     padding: 1rem 1.5rem;
-    font-size: 1.1rem;
+    font-size: 14px;
     transition: all 0.3s ease;
     color: #333;
 }
@@ -99,14 +99,14 @@
 
 .step-card .form-label {
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.95);
+    color: #fff;
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
 }
-
 .step-card h4 {
     color: white;
     position: relative;
+    font-size: 20px;
     padding-bottom: 1rem;
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
@@ -155,17 +155,20 @@
     z-index: 3;
     text-align: center;
 }
-
+.form-text {
+    font-size: 12px;
+}
 .step-number {
     width: 40px;
     height: 40px;
+    font-size:14px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: white;
+    color: #000;
     margin: 0 auto 0.5rem;
     transition: all 0.3s ease;
     border: 3px solid rgba(255, 255, 255, 0.3);
@@ -179,19 +182,19 @@
 }
 
 .step-label {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.9rem;
+    color: #000;
+    font-size: 14px;
     transition: all 0.3s ease;
 }
 
 .step.active .step-label {
-    color: white;
+    color: #34a853;
     font-weight: 600;
 }
 
 /* Buttons */
 .btn-gradient {
-    background: linear-gradient(135deg, #35af3f 0%, #117012  100%);
+    background: linear-gradient(135deg, #35af3f 0%, #34A853  100%);
     border: none;
     color: white;
     padding: 1rem 2.5rem;
@@ -247,7 +250,7 @@
 }
 
 .form-control[type="file"]::file-selector-button {
-    background: linear-gradient(135deg, #35af3f 0%, #117012  100%);
+    background: linear-gradient(135deg, #35af3f 0%, #34A853  100%);
     border: none;
     color: white;
     padding: 0.5rem 1.5rem;
@@ -276,7 +279,7 @@
 
 .form-check-label {
     color: rgba(255, 255, 255, 0.95);
-    font-size: 1rem;
+    font-size: 14px;
 }
 </style>
 
@@ -374,23 +377,29 @@
                         </div>
                     </div>
 
-                    <div class="form-check mt-4">
-                        <input class="form-check-input" type="checkbox" id="step1Confirm" required>
-                        <label class="form-check-label" for="step1Confirm">
-                            I confirm the above details are correct
-                        </label>
-                    </div>
-
-                    <div class="text-end mt-5">
-                        <button type="button" class="btn btn-gradient next-btn" data-next="2">
+                    
+                    <div class="text-end mt-5 header-nav">
+                        <div class="form-check mt-4">
+                            <input class="form-check-input" type="checkbox" id="step1Confirm" required>
+                            <label class="form-check-label" for="step1Confirm">
+                                I confirm the above details are correct
+                            </label>
+                        </div>
+                        <button type="button" class="btn btn-gradient next-btn shop-btn" data-next="2">
                             Continue →
                         </button>
                     </div>
+                   <div class="text-end mt-5 header-nav">
+                        <a class="form-check-label" href="{{ route('vendor.login') }}">
+                            Already have an account?
+                        </a>
+                    </div>
+
                 </div>
 
                 <!-- ================= STEP 2 ================= -->
                 <div class="form-step step-card d-none" id="step2">
-                    <h4 class="mb-4 fw-semibold">🏪 Shop Information</h4>
+                    <h4 class="mb-4 fw-semibold">Shop Information</h4>
 
                     <div class="row g-4">
                         <div class="col-md-6">
@@ -447,15 +456,15 @@
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-between mt-5">
+                    <div class="d-flex justify-content-between mt-5 header-nav">
                         <button type="button" class="btn btn-outline-light prev-btn" data-prev="1">← Back</button>
-                        <button type="button" class="btn btn-gradient next-btn" data-next="3">Continue →</button>
+                        <button type="button" class="btn btn-gradient next-btn shop-btn" data-next="3">Continue →</button>
                     </div>
                 </div>
 
                 <!-- ================= STEP 3 ================= -->
                 <div class="form-step step-card d-none" id="step3">
-                    <h4 class="mb-4 fw-semibold">💳 Bank Details & Agreement</h4>
+                    <h4 class="mb-4 fw-semibold">Bank Details & Agreement</h4>
 
                     <div class="row g-4">
                         <div class="col-md-6">
@@ -516,9 +525,9 @@
                         </label>
                     </div>
 
-                    <div class="d-flex justify-content-between mt-5">
+                    <div class="d-flex justify-content-between mt-5 header-nav">
                         <button type="button" class="btn btn-outline-light prev-btn" data-prev="2">← Back</button>
-                        <button type="submit" class="btn btn-gradient px-5" id="submitBtn">
+                        <button type="submit" class="btn btn-gradient px-5 shop-btn" id="submitBtn">
                             <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             Submit Application
                         </button>

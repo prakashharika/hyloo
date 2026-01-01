@@ -12,8 +12,19 @@ use App\Http\Controllers\Admin\VendorController;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
-Route::get('/vendor/register', [VendorRegisterController::class, 'create'])->name('vendor.register.form');
-Route::post('/vendor/register', [VendorRegisterController::class, 'store'])->name('vendor.register');
+
+Route::prefix('vendor')->group(function(){
+    Route::get('/register', [VendorRegisterController::class, 'create'])->name('vendor.register.form');
+    Route::post('/register', [VendorRegisterController::class, 'store'])->name('vendor.register');
+    Route::get('/login', [VendorRegisterController::class, 'login'])->name('vendor.login');
+    Route::get('/logout', [VendorRegisterController::class, 'logout'])->name('vendor.logout');
+    Route::middleware(['vendorAuth'])->group(function () {
+        Route::get('/vendotlog', function () {
+            
+            return "hiii";
+        });
+    });
+});
 
 Route::view('dashboard', 'dashboard')
 ->middleware(['auth', 'verified'])
