@@ -23,6 +23,21 @@
             {{ __('Products') }}
         </flux:navlist.item>
                 </flux:navlist.group>
+                  <flux:navlist.group :heading="__('Attributes')" class="grid">
+        <flux:navlist.item icon="flag" 
+            :href="route('attributes.index')" 
+            :current="request()->routeIs('attributes.*')" 
+            wire:navigate>
+            {{ __('Attributes') }}
+        </flux:navlist.item>
+
+        <flux:navlist.item icon="flag" 
+            :href="route('attribute-values.index')" 
+            :current="request()->routeIs('attribute-values.*')" 
+            wire:navigate>
+            {{ __('Attribute Values') }}
+        </flux:navlist.item>
+    </flux:navlist.group>
                 <flux:navlist.group :heading="__('Vendor Management')" class="grid">
                 <flux:navlist.item icon="users" :href="route('admin.vendors')" :current="request()->routeIs('admin.vendors')" wire:navigate>
                     {{ __('Vendors') }}

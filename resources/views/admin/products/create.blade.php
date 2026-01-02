@@ -125,7 +125,9 @@
 
                 <div class="col-12">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="is_active" checked>
+                       <input type="hidden" name="is_active" value="0">
+                        <input class="form-check-input" type="checkbox" name="is_active" value="1" checked>
+
                         <label class="form-check-label">Active</label>
                     </div>
                 </div>

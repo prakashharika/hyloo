@@ -23,18 +23,26 @@ class ProductController extends Controller
         ]);
     }
 
-    public function store(Request $request)
-    {
-        Product::create($request->validate([
-            'name' => 'required',
-            'category_id' => 'nullable',
-            'vendor_id' => 'nullable',
-            'base_price' => 'nullable|numeric',
-            'is_active' => 'boolean',
-        ]));
+   public function store(Request $request)
+{
+    $data = $request->validate([
+        'name' => 'required|string|max:200',
+        'description' => 'nullable|string',
+        'category_id' => 'nullable|exists:categories,category_id',
+        'vendor_id' => 'nullable|exists:vendors,id',
+        'base_price' => 'nullable|numeric',
+        'is_active' => 'sometimes|boolean',
+    ]);
 
-        return redirect()->route('admin.products.index')->with('success', 'Product created');
-    }
+    $data['is_active'] = $request->has('is_active');
+
+    Product::create($data);
+
+    return redirect()
+        ->route('products.index')
+        ->with('success', 'Product created');
+}
+
 
     public function edit(Product $product)
     {
@@ -48,7 +56,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $product->update($request->all());
-        return redirect()->route('admin.products.index')->with('success', 'Updated');
+        return redirect()->route('products.index')->with('success', 'Updated');
     }
 
     public function destroy(Product $product)

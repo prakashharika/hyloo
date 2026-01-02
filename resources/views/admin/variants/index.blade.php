@@ -82,9 +82,10 @@
 <div class="admin-container">
     <div class="admin-header">
         <h1 class="admin-title">Variants – {{ $product->name }}</h1>
-        <a href="{{ route('admin.products.variants.create', $product) }}" class="btn btn-primary">
-            Add Variant
-        </a>
+       <a href="{{ route('products.variants.create', $product) }}" class="btn btn-primary">
+    Add Variant
+</a>
+
     </div>
 
     <div class="admin-card">

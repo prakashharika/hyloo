@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\ProductVariant;
+use App\Models\Attribute;
+use App\Models\AttributeValue;
 
 class ProductVariantController extends Controller
 {
@@ -21,18 +25,32 @@ class ProductVariantController extends Controller
         return view('admin.variants.create', compact('product', 'attributes'));
     }
 
-    public function store(Request $request, Product $product)
-    {
-        $variant = $product->variants()->create([
-            'sku' => $request->sku,
-            'price' => $request->price,
-            'stock_quantity' => $request->stock_quantity,
-        ]);
+   public function store(Request $request, Product $product)
+{
+    
+    $validated = $request->validate([
+        'sku' => 'required|string|unique:product_variants,sku',
+        'price' => 'required|numeric',
+        'stock_quantity' => 'required|integer',
+        'attribute_values' => 'nullable|array', // nullable allows no checkbox selection
+    ]);
 
-        foreach ($request->attribute_values as $valueId) {
-            $variant->attributes()->attach($valueId);
-        }
+    // ✅ Create the variant
+    $variant = $product->variants()->create([
+        'sku' => $validated['sku'],
+        'price' => $validated['price'],
+        'stock_quantity' => $validated['stock_quantity'],
+    ]);
 
-        return redirect()->route('admin.products.variants.index', $product);
+  
+    $attributeValues = $validated['attribute_values'] ?? []; 
+    if (!empty($attributeValues)) {
+        $variant->attributes()->attach($attributeValues);
     }
+
+    
+    return redirect()->route('products.variants.index', $product)
+                     ->with('success', 'Variant created successfully!');
+}
+
 }

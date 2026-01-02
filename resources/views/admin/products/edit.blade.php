@@ -84,11 +84,14 @@
     </div>
 
     <div class="admin-card">
-        <form method="POST" action="{{ route('admin.products.update', $product) }}">
+        <form method="POST" action="{{ route('products.update', $product) }}">
             @csrf
             @method('PUT')
 
             @include('admin.products._form', ['product' => $product])
+             <div class="mt-3">
+        <button class="btn btn-primary">Update Product</button>
+    </div>
         </form>
     </div>
 </div>
