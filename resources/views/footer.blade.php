@@ -44,7 +44,7 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="footer-order">
                                 <div class="logo">
-                                    <img src="{{asset('assets/images/logos/footer-logo.webp')}}" alt="logo">
+                                    <img src="{{asset('logo-dark.png')}}"  alt="logo">
                                 </div>
                                 <div class="footer-link order-link">
                                     <ul>

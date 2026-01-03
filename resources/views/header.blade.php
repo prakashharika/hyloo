@@ -49,7 +49,7 @@
                 <div class="header-center">
                     <div class="logo">
                         <a href="index"{{route('home')}}">
-                            <img src="{{asset('assets/images/logos/logo.webp')}}" alt="logo">
+                            <img src="{{asset('logo.png')}}"  alt="logo">
                         </a>
                     </div>
                     <div class="header-search-btn">
