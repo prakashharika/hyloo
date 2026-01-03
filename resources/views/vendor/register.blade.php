@@ -253,7 +253,6 @@
                     <div class="d-flex justify-content-between mt-5 header-nav">
                         <button type="button" class="btn btn-outline-light prev-btn" data-prev="2">← Back</button>
                         <button type="submit" class="btn btn-gradient px-5 shop-btn" id="submitBtn">
-                            <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             Submit Application
                         </button>
                     </div>
