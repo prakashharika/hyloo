@@ -16,7 +16,7 @@
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                     <flux:navlist.item icon="flag" :href="route('category.index')" :current="request()->routeIs('category.*')" wire:navigate>{{ __('Category') }}</flux:navlist.item>
                      <flux:navlist.item 
-            icon="flag" 
+            icon="cube" 
             :href="route('products.index')" 
             :current="request()->routeIs('products.*')" 
             wire:navigate>
@@ -24,14 +24,14 @@
         </flux:navlist.item>
                 </flux:navlist.group>
                   <flux:navlist.group :heading="__('Attributes')" class="grid">
-        <flux:navlist.item icon="flag" 
+        <flux:navlist.item icon="adjustments-horizontal" 
             :href="route('attributes.index')" 
             :current="request()->routeIs('attributes.*')" 
             wire:navigate>
             {{ __('Attributes') }}
         </flux:navlist.item>
 
-        <flux:navlist.item icon="flag" 
+        <flux:navlist.item icon="list-bullet" 
             :href="route('attribute-values.index')" 
             :current="request()->routeIs('attribute-values.*')" 
             wire:navigate>

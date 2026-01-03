@@ -30,26 +30,30 @@ Route::prefix('vendor')->group(function(){
     });
 });
 
-Route::view('dashboard', 'dashboard')
-->middleware(['auth', 'verified'])
-->name('dashboard');
 
-//admin
-Route::get('/admin', function () {
-    return view('admin/login');
-})->name('home');
-Route::get('vendors', [VendorController::class,'index'])->name('admin.vendors');
-    Route::get('vendor/{id}', [VendorController::class,'show'])->name('admin.vendor.view');
- // Products
+
+  
+//seler
+Route::get('seller', [sellerController::class, 'sellerLogin'])->name('seller.login');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('admin')->group(function(){
+        Route::prefix('category')->name('category.')->group(function () {
+            Route::get('/', [CategoryController::class, 'index'])->name('index');
+            Route::get('/create', [CategoryController::class, 'create'])->name('create');
+            Route::post('/', [CategoryController::class, 'store'])->name('store');
+            Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('edit');
+            Route::put('/{category}', [CategoryController::class, 'update'])->name('update');
+            Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('destroy');
+            Route::patch('/{category}/toggle-status', [CategoryController::class, 'toggleStatus'])->name('toggle-status');
+        });
+        Route::view('dashboard', 'dashboard')->name('dashboard');
+        Route::get('vendors', [VendorController::class,'index'])->name('admin.vendors');
+        Route::get('vendor/{id}', [VendorController::class,'show'])->name('admin.vendor.view');
         Route::resource('products', ProductController::class);
-
-        // Attributes
         Route::resource('attributes', AttributeController::class);
-
-        // Attribute Values
         Route::resource('attribute-values', AttributeValueController::class);
-
-        // Product Variants (nested)
         Route::get('products/{product}/variants', [ProductVariantController::class, 'index'])
             ->name('products.variants.index');
 
@@ -58,22 +62,7 @@ Route::get('vendors', [VendorController::class,'index'])->name('admin.vendors');
 
         Route::post('products/{product}/variants', [ProductVariantController::class, 'store'])
             ->name('products.variants.store');
-//seler
-Route::get('seller', [sellerController::class, 'sellerLogin'])->name('seller.login');
-
-
-//catgory
-Route::prefix('category')->name('category.')->group(function () {
-    Route::get('/', [CategoryController::class, 'index'])->name('index');
-    Route::get('/create', [CategoryController::class, 'create'])->name('create');
-    Route::post('/', [CategoryController::class, 'store'])->name('store');
-    Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('edit');
-    Route::put('/{category}', [CategoryController::class, 'update'])->name('update');
-    Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('destroy');
-    Route::patch('/{category}/toggle-status', [CategoryController::class, 'toggleStatus'])->name('toggle-status');
-});
-
-Route::middleware(['auth'])->group(function () {
+    });
     Route::redirect('settings', 'settings/profile');
 
     Volt::route('settings/profile', 'settings.profile')->name('profile.edit');

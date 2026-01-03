@@ -50,7 +50,7 @@ class CategoryController extends Controller
     // Show edit form
     public function edit(Category $category)
     {
-        return view('admin.category.edit', compact('category'));
+        return view('admin.category.form', compact('category'));
     }
 
     // Update category

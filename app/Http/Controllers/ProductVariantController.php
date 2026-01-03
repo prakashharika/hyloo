@@ -42,11 +42,11 @@ class ProductVariantController extends Controller
         'stock_quantity' => $validated['stock_quantity'],
     ]);
 
-  
-    $attributeValues = $validated['attribute_values'] ?? []; 
-    if (!empty($attributeValues)) {
-        $variant->attributes()->attach($attributeValues);
-    }
+  $attributeValues = array_filter($validated['attribute_values'] ?? []);
+
+if (!empty($attributeValues)) {
+    $variant->attributes()->attach($attributeValues);
+}
 
     
     return redirect()->route('products.variants.index', $product)
