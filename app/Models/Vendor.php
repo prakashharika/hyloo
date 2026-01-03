@@ -45,5 +45,14 @@ class Vendor extends Authenticatable
         'status'
     ];
 
+
+public function initials(): string
+{
+    return collect(explode(' ', $this->name))
+        ->map(fn ($word) => strtoupper(substr($word, 0, 1)))
+        ->join('');
+}
+
+
     protected $hidden = ['password'];
 }
