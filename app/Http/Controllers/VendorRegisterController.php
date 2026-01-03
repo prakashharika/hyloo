@@ -95,22 +95,39 @@ class VendorRegisterController extends Controller
             ->withInput();
     }
 }
-public function login(Request $request){
-    $email = "xybutyheha@mailinator.com";
-            $vendor = Vendor::where('email', $email)->first();
-            if ($vendor) {
-                Auth::guard('vendor')->login($vendor);
-            return redirect()->route('vendor.register.form')->with('success', 'OTP verified successfully!');
-        } else {
-            return redirect()->back()->with('error', 'Invalid OTP. Please try again.');
-        }
+public function login(){
+    return view('vendor.login');
+}
+public function forgot(){
+    return view('vendor.login');
+}
+public function loginCheck(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required|string',
+    ]);
+
+    $vendor = Vendor::where('email', $request->email)
+        // ->where('status', 'active') 
+        ->first();
+
+    if ($vendor && Hash::check($request->password, $vendor->password)) {
+        Auth::guard('vendor')->login($vendor);
+
+        return redirect()->route('vendor.dashboard')
+            ->with('success', 'Verified successfully!');
+    } else {
+        return redirect()->back()
+            ->with('error', 'Invalid email or password, or account inactive.');
+    }
 }
    public function logout(Request $request)
     {
         Auth::guard('vendor')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('vendor.register.form');
+        return redirect()->route('vendor.login');
     }
 
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\sellerController;
 use App\Http\Controllers\VendorRegisterController;
 use App\Http\Controllers\Admin\VendorController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\VendorHandler;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\AttributeValueController;
 use App\Http\Controllers\ProductVariantController;
@@ -21,12 +22,15 @@ Route::prefix('vendor')->group(function(){
     Route::get('/register', [VendorRegisterController::class, 'create'])->name('vendor.register.form');
     Route::post('/register', [VendorRegisterController::class, 'store'])->name('vendor.register');
     Route::get('/login', [VendorRegisterController::class, 'login'])->name('vendor.login');
+    Route::get('/forgot', [VendorRegisterController::class, 'forgot'])->name('vendor.password.forgot');
+    Route::post('/login', [VendorRegisterController::class, 'loginCheck'])->name('vendor.login.submit');
     Route::get('/logout', [VendorRegisterController::class, 'logout'])->name('vendor.logout');
     Route::middleware(['vendorAuth'])->group(function () {
         Route::get('/vendotlog', function () {
             
             return "hiii";
         });
+        Route::get('/dashboard', [VendorHandler::class, 'dashboard'])->name('vendor.dashboard');
     });
 });
 
