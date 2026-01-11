@@ -11,7 +11,8 @@ class CategoryController extends Controller
     // Show all categories
     public function index()
     {
-        $categories = Category::orderBy('priority', 'asc')
+        $categories = Category::with('subcategories')
+            ->orderBy('priority', 'asc')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
         

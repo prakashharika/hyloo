@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
@@ -51,6 +52,15 @@ Route::middleware(['auth'])->group(function () {
             Route::put('/{category}', [CategoryController::class, 'update'])->name('update');
             Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('destroy');
             Route::patch('/{category}/toggle-status', [CategoryController::class, 'toggleStatus'])->name('toggle-status');
+        });
+        Route::prefix('category/{category}/subcategory')->name('category.subcategory.')->group(function () {
+            Route::get('/', [SubCategoryController::class, 'index'])->name('index');
+            Route::get('/create', [SubCategoryController::class, 'create'])->name('create');
+            Route::post('/', [SubCategoryController::class, 'store'])->name('store');
+            Route::get('/{subcategory}/edit', [SubCategoryController::class, 'edit'])->name('edit');
+            Route::put('/{subcategory}', [SubCategoryController::class, 'update'])->name('update');
+            Route::delete('/{subcategory}', [SubCategoryController::class, 'destroy'])->name('destroy');
+            Route::patch('/{subcategory}/toggle-status', [SubCategoryController::class, 'toggleStatus'])->name('toggle-status');
         });
         Route::view('dashboard', 'dashboard')->name('dashboard');
         Route::get('vendors', [VendorController::class,'index'])->name('admin.vendors');

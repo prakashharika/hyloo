@@ -4,13 +4,20 @@
 
 <div class="admin-container">
     <div class="admin-header">
-        <h1 class="admin-title">Category Management</h1>
-        <a href="{{ route('category.create') }}" class="btn btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+        <div class="flex items-center justify-between w-full">
+            <h1 class="admin-title">SubCategories - {{ $category->name }}</h1>
+            <div class="flex space-x-2">
+                <a href="{{ route('category.index') }}" class="btn btn-secondary">
+                    Back to Categories
+                </a>
+                <a href="{{ route('category.subcategory.create', $category) }}" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 3a1 1 0 00-1 1v5H4a1 1 0 100 2h5v5a1 1 0 102 0v-5h5a1 1 0 100-2h-5V4a1 1 0 00-1-1z" clip-rule="evenodd" />
                     </svg>
-            <i class="bi bi-plus-lg"></i> Add New Category
-        </a>
+                    <i class="bi bi-plus-lg"></i> Add New SubCategory
+                </a>
+            </div>
+        </div>
     </div>
 
     @if(session('success'))
@@ -27,21 +34,20 @@
                     <th>Image</th>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Sub Category Count</th>
-                    <th></th>Priority</th>
+                    <th>Priority</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse($categories as $category)
+                @forelse($subcategories as $subcategory)
                 <tr>
                     <td>
-                        {{ $category->category_id }}
+                        {{ $subcategory->subcategory_id }}
                     </td>
                     <td>
-                        @if($category->image_url)
-                            <img src="{{ $category->image_url }}" alt="{{ $category->name }}" 
+                        @if($subcategory->image_url)
+                            <img src="{{ $subcategory->image_url }}" alt="{{ $subcategory->name }}" 
                                 class="h-10 w-10 rounded-full object-cover">
                         @else
                             <div class="h-10 w-10 bg-gray-200 rounded-full flex items-center justify-center">
@@ -50,40 +56,34 @@
                         @endif
                     </td>
                     <td>
-                        {{ $category->name }}
+                        {{ $subcategory->name }}
                     </td>
                     <td>
-                        {{ $category->description ?? 'No description' }}
+                        {{ $subcategory->description ?? 'No description' }}
                     </td>
                     <td>
-                        <a href="{{ route('category.subcategory.index', $category) }}" 
-                           class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 hover:bg-blue-200">
-                            Sub Category
-                        </a>
+                        {{ $subcategory->priority }}
                     </td>
                     <td>
-                        {{ $category->priority }}
-                    </td>
-                    <td>
-                        <form action="{{ route('category.toggle-status', $category) }}" method="POST" class="inline">
+                        <form action="{{ route('category.subcategory.toggle-status', [$category, $subcategory]) }}" method="POST" class="inline">
                             @csrf
                             @method('PATCH')
                             <button type="submit" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium 
-                                {{ $category->status === 'active' 
+                                {{ $subcategory->status === 'active' 
                                     ? 'bg-green-100 text-green-800' 
                                     : 'bg-red-100 text-red-800' }}">
-                                {{ ucfirst($category->status) }}
+                                {{ ucfirst($subcategory->status) }}
                             </button>
                         </form>
                     </td>
                     <td>
                         <div class="flex space-x-2">
-                            <a href="{{ route('category.edit', $category) }}" 
+                            <a href="{{ route('category.subcategory.edit', [$category, $subcategory]) }}" 
                             class="text-blue-600 hover:text-blue-900">
                                 Edit
                             </a>
-                            <form action="{{ route('category.destroy', $category) }}" method="POST" 
-                                onsubmit="return confirm('Are you sure you want to delete this category?')"
+                            <form action="{{ route('category.subcategory.destroy', [$category, $subcategory]) }}" method="POST" 
+                                onsubmit="return confirm('Are you sure you want to delete this subcategory?')"
                                 class="inline">
                                 @csrf
                                 @method('DELETE')
@@ -96,8 +96,8 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="8">
-                        No categories found. <a href="{{ route('category.create') }}" class="text-blue-600 hover:underline">Create one</a>
+                    <td colspan="7">
+                        No subcategories found. <a href="{{ route('category.subcategory.create', $category) }}" class="text-blue-600 hover:underline">Create one</a>
                     </td>
                 </tr>
                 @endforelse
@@ -105,9 +105,9 @@
 
  </table>
 
-    @if($categories->hasPages())
+    @if($subcategories->hasPages())
     <div class="px-6 py-4 border-t">
-        {{ $categories->links() }}
+        {{ $subcategories->links() }}
     </div>
     @endif
     </div>
